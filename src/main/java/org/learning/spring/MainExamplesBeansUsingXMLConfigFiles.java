@@ -10,14 +10,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-public class SpringMainClass {
+public class MainExamplesBeansUsingXMLConfigFiles {
 
     public static void main(String[] args) {
 
         //SpringMainClass.creatingBeanByBeanFactoryDeprecated();
-        //SpringMainClass.creatingBeanByBeanFactory();
+        MainExamplesBeansUsingXMLConfigFiles.creatingBeanByBeanFactory();
         //SpringMainClass.creatingBeanByApplicationContext();
-        SpringMainClass.exampleOneCreatingBean();
+        //SpringMainClass.exampleOneCreatingBean();
     }
 
     public static void creatingBeanByBeanFactoryDeprecated() {
@@ -44,6 +44,9 @@ public class SpringMainClass {
         XmlBeanDefinitionReader beanReader = new XmlBeanDefinitionReader(beanFactory);
         beanReader.loadBeanDefinitions(resource);
 
+        // In this case when we are using BeanFactory, the beans creation are lazy, those are create just after invoke
+        // the getBean method, so the Beans have not been initialized,
+        // We ca confirm commenting the below line and see if the constructor is not executed.
         Person personBean = (Person) ((DefaultListableBeanFactory) beanFactory).getBean("myPersonBean");
 
         System.out.println("Bean created via XmlBeanDefinition: \n\n" + personBean);
