@@ -1,6 +1,10 @@
 package org.learning.spring;
 
 public class Person {
+
+    public Person() {
+        System.out.println("Creating Person Object");
+    }
     private String name = "Jose Noe";
     private String lastName = "Hernandez Vivanco";
     private int age = 38;

@@ -16,7 +16,8 @@ public class SpringMainClass {
 
         //SpringMainClass.creatingBeanByBeanFactoryDeprecated();
         //SpringMainClass.creatingBeanByBeanFactory();
-        SpringMainClass.creatingBeanByApplicationContext();
+        //SpringMainClass.creatingBeanByApplicationContext();
+        SpringMainClass.exampleOneCreatingBean();
     }
 
     public static void creatingBeanByBeanFactoryDeprecated() {
@@ -50,9 +51,37 @@ public class SpringMainClass {
 
     public static void creatingBeanByApplicationContext() {
 
+        // Way 1 to inject a Bean in two line of code using "ApplicationContext" class
         ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         Person myPersonBean = (Person) appContext.getBean("myPersonBean");
 
+        // Way 2 to Inject a Bean using the "BeanFactory" class, due ApplicationContext is an extension of BeanFactory
+        // we can use it
+        BeanFactory beanFactory = (BeanFactory) appContext;
+        Person myPersonBeanByBeanFactory = (Person) beanFactory.getBean("myPersonBean");
+
         System.out.println("Bean created by ApplicationContext class: \n\n" + myPersonBean);
+        System.out.println("Bean created by BeanFactory class: \n\n" + myPersonBeanByBeanFactory);
+    }
+
+    public static void exampleOneCreatingBean(){
+
+        ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Person myPersonBean = (Person) appContext.getBean("myPersonBean");
+
+        myPersonBean.setAge(45);
+        myPersonBean.setName("Karla Yuriza");
+        myPersonBean.setLastName("Espiritu");
+        myPersonBean.setProfession("QA Engineer");
+
+        // Creating another Bean object to refer to the same Bean
+        Person mySecondPersonBean = appContext.getBean("mySecondBean", Person.class);
+        mySecondPersonBean.setName("Maria");
+        mySecondPersonBean.setLastName("Concepcion");
+        mySecondPersonBean.setAge(26);
+        mySecondPersonBean.setProfession("Chemical");
+
+        System.out.println("First Bean: " + myPersonBean + "\n");
+        System.out.println("Second Bean: " + mySecondPersonBean + "\n");
     }
 }

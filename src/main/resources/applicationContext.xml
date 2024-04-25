@@ -10,4 +10,7 @@
     <bean id="myPersonBean" class="org.learning.spring.Person" />
     <alias name="myPersonBean" alias="myBean" />
 
+    <bean id="mySecondPersonBean" class="org.learning.spring.Person" />
+    <alias name="mySecondPersonBean" alias="mySecondBean" />
+
 </beans>
