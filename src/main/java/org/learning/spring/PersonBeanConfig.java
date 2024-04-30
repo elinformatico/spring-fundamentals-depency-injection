@@ -13,12 +13,12 @@ public class PersonBeanConfig {
      * If we don't include the property name of the bean, Spring will take the name of the method, so if
      * we include it, Spring will take the name of the property "name"
      * */
-    @Bean(name = "myFirstBeanPerson")
+    @Bean(name = "myFirstBeanPerson", initMethod = "initBean", destroyMethod = "destroyBean")
     public Person PersonBean() {
         return  new Person();
     }
 
-    @Bean(name = "mySecondBeanPerson")
+    @Bean(name = "mySecondBeanPerson", initMethod = "initBean", destroyMethod = "destroyBean")
     public Person SecondPersonBean() {
         return new Person();
     }

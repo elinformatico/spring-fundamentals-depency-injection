@@ -7,7 +7,10 @@ public class MainExamplesBeansUsingJavaAnnotations {
 
     public static void main(String[] args) {
 
-        ApplicationContext appContext = new AnnotationConfigApplicationContext(PersonBeanConfig.class);
+        // ApplicationContext appContext = new AnnotationConfigApplicationContext(PersonBeanConfig.class);
+        // AnnotationConfigApplicationContext have the .close() method that Invoke the init and destroy bean methods
+        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(PersonBeanConfig.class);
+
         //Person myFirstPersonBean = appContext.getBean(Person.class);
         Person myFirstPersonBean = appContext.getBean("myFirstBeanPerson", Person.class);
 
@@ -20,6 +23,8 @@ public class MainExamplesBeansUsingJavaAnnotations {
 
         System.out.println("My First Person Bean: " + myFirstPersonBean + "\n");
         System.out.println("My Second Person Bean" + mySecondPerson);
+
+        appContext.close();
 
     }
 }
