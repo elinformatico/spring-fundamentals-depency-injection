@@ -1,5 +1,17 @@
 package org.learning.spring;
 
+import org.springframework.stereotype.Component;
+
+/*
+* Component represent a class whose instances
+* can be injected into another object.
+*
+* We need to use along the below configuration in PersonBeanConfig.java
+*
+* @Configuration
+* @ComponentScan(basePackages = "org.learning.spring")
+* **/
+//@Component  // --> it's works if we comment this line
 public class Person {
 
     public Person() {

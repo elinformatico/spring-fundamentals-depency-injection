@@ -46,7 +46,7 @@ public class MainExamplesBeansUsingXMLConfigFiles {
 
         // In this case when we are using BeanFactory, the beans creation are lazy, those are create just after invoke
         // the getBean method, so the Beans have not been initialized,
-        // We ca confirm commenting the below line and see if the constructor is not executed.
+        // We can confirm commenting the below line and see if the constructor is not executed.
         Person personBean = (Person) ((DefaultListableBeanFactory) beanFactory).getBean("myPersonBean");
 
         System.out.println("Bean created via XmlBeanDefinition: \n\n" + personBean);
