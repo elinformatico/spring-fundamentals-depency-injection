@@ -6,6 +6,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class MainExamplesBeansUsingJavaAnnotations {
 
     public static void main(String[] args) {
+        //MainExamplesBeansUsingJavaAnnotations.creatingBeansByAnnotations();
+        MainExamplesBeansUsingJavaAnnotations.creatingBeanPreparedWithInformation();
+    }
+
+    public static void creatingBeansByAnnotations() {
 
         // ApplicationContext appContext = new AnnotationConfigApplicationContext(PersonBeanConfig.class);
         // AnnotationConfigApplicationContext have the .close() method that Invoke the init and destroy bean methods
@@ -25,6 +30,15 @@ public class MainExamplesBeansUsingJavaAnnotations {
         System.out.println("My Second Person Bean" + mySecondPerson);
 
         appContext.close();
-
     }
+
+    public static void creatingBeanPreparedWithInformation() {
+
+        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(PersonBeanConfig.class);
+        Person person = appContext.getBean("anotherBeanObject", Person.class);
+
+        System.out.println("Another Bean Object: " + person);
+        appContext.close();
+    }
+
 }

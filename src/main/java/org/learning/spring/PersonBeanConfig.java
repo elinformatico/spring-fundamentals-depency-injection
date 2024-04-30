@@ -22,4 +22,16 @@ public class PersonBeanConfig {
     public Person SecondPersonBean() {
         return new Person();
     }
+
+    @Bean(name = "anotherBeanObject", initMethod = "initBean", destroyMethod = "destroyBean")
+    public Person AnotherBeanObject() {
+
+        Person person = new Person();
+        person.setName("Armando");
+        person.setLastName("Perez Espinoza");
+        person.setProfession("Professional Design");
+        person.setAge(39);
+
+        return person;
+    }
 }
