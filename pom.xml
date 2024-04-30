@@ -33,6 +33,16 @@
             <version>5.3.5</version>
             <!-- <version>6.0.11</version> -->
         </dependency>
+
+        <!-- extension from Java EE to apply funtionality to init and destroy methods
+             in order to mark out a managed bean, a resource and so on.
+             We can use the PostConstruct (initMethod) and PreDestroy (destroyMethod)
+         -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
     </dependencies>
 
 </project>

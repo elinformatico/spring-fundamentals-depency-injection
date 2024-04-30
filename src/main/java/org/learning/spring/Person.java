@@ -2,6 +2,9 @@ package org.learning.spring;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /*
 * Component represent a class whose instances
 * can be injected into another object.
@@ -65,10 +68,12 @@ public class Person {
                 '}';
     }
 
+    @PostConstruct
     public void initBean() throws Exception {
         System.out.println("Person bean has been instantiated inside initBean() method");
     }
 
+    @PreDestroy
     public void destroyBean() throws Exception {
         System.out.println("Person bean has been destroyed inside destroyBean() method()");
     }

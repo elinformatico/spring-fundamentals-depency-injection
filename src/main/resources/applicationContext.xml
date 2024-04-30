@@ -15,10 +15,32 @@
     <alias name="mySecondPersonBean" alias="mySecondBean" /> -->
 
     <!-- A new way when we are going to invoke the init and destroy bean methods -->
-    <bean id="myPersonBean" class="org.learning.spring.Person"
+    <!-- <bean id="myPersonBean" class="org.learning.spring.Person"
           init-method="initBean" destroy-method="destroyBean" />
 
     <bean id="mySecondPersonBean" class="org.learning.spring.Person"
-          init-method="initBean" destroy-method="destroyBean" />
+          init-method="initBean" destroy-method="destroyBean" /> -->
+
+    <!-- When we are using the "javax.annotation-api" along with @PostConstruct and @PreDestroy is not
+         necessary to define the init-method and destroy-method.
+
+         Also, we can set values to inject in the Bean
+    -->
+
+    <!-- This implementation is to use the @PostConstruct & @PreDestroy -->
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+
+    <bean id="myPersonBean" class="org.learning.spring.Person">
+        <property name="name" value="Erika" />
+        <property name="lastName" value="Isabeles Chocoteco" />
+        <property name="age" value="37" />
+        <property name="profession" value="Ama de Casa" />
+    </bean>
+    <bean id="mySecondPersonBean" class="org.learning.spring.Person">
+        <property name="name" value="Alejandro" />
+        <property name="lastName" value="Perez" />
+        <property name="age" value="39" />
+        <property name="profession" value="Cerrajero" />
+    </bean>
 
 </beans>

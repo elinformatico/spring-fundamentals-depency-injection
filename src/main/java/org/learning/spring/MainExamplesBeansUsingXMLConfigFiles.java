@@ -18,7 +18,8 @@ public class MainExamplesBeansUsingXMLConfigFiles {
         //MainExamplesBeansUsingXMLConfigFiles.creatingBeanByBeanFactory();
         //SpringMainClass.creatingBeanByApplicationContext();
         //SpringMainClass.exampleOneCreatingBean();
-        MainExamplesBeansUsingXMLConfigFiles.invokingInitDestroyBeanMethods();
+        //MainExamplesBeansUsingXMLConfigFiles.invokingInitDestroyBeanMethods();
+        MainExamplesBeansUsingXMLConfigFiles.populatingBeanXMLConfigFile();
     }
 
     public static void creatingBeanByBeanFactoryDeprecated() {
@@ -108,5 +109,18 @@ public class MainExamplesBeansUsingXMLConfigFiles {
         * instead of "ApplicationContext", and this will invoke the destroyBeanMethdos.
         * */
         appContext.close();
+    }
+
+    public static void populatingBeanXMLConfigFile() {
+
+        ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Person myFirstPersonBean = (Person) appContext.getBean("myPersonBean");
+        Person mySecondPersonBean = (Person) appContext.getBean("mySecondPersonBean");
+
+        System.out.println("First Bean: " + myFirstPersonBean + "\n");
+        System.out.println("Second Bean: " + mySecondPersonBean + "\n");
+
+        appContext.close();
+
     }
 }
