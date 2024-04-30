@@ -26,6 +26,13 @@ public class Person {
         System.out.println("Creating Person [" + this.name + "] Object");
     }
 
+    public Person(String name, String lastName, int age, String profession) {
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.profession = profession;
+    }
+
     public String getName() {
         return name;
     }

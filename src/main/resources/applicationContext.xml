@@ -30,7 +30,7 @@
     <!-- This implementation is to use the @PostConstruct & @PreDestroy -->
     <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
 
-    <bean id="myPersonBean" class="org.learning.spring.Person">
+    <!-- <bean id="myPersonBean" class="org.learning.spring.Person">
         <property name="name" value="Erika" />
         <property name="lastName" value="Isabeles Chocoteco" />
         <property name="age" value="37" />
@@ -41,6 +41,19 @@
         <property name="lastName" value="Perez" />
         <property name="age" value="39" />
         <property name="profession" value="Cerrajero" />
+    </bean> -->
+
+    <bean id="myPersonBean" class="org.learning.spring.Person">
+        <constructor-arg name="name" value="Erika" />
+        <constructor-arg name="lastName" value="Isabeles Chocoteco" />
+        <constructor-arg name="age" value="37" />
+        <constructor-arg name="profession" value="Ama de Casa" />
+    </bean>
+    <bean id="mySecondPersonBean" class="org.learning.spring.Person">
+        <constructor-arg index="0" type="java.lang.String" value="Alejandro" />
+        <constructor-arg index="1" type="java.lang.String" value="Perez" />
+        <constructor-arg name="age" value="39" />
+        <constructor-arg index="3" type="java.lang.String" value="Cerrajero" />
     </bean>
 
 </beans>
