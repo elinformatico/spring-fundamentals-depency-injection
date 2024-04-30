@@ -7,10 +7,18 @@
 	   		http://www.springframework.org/schema/context
 	   		http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-    <bean id="myPersonBean" class="org.learning.spring.Person" />
+    <!-- COMMENTED -->
+    <!-- <bean id="myPersonBean" class="org.learning.spring.Person" />
     <alias name="myPersonBean" alias="myBean" />
 
     <bean id="mySecondPersonBean" class="org.learning.spring.Person" />
-    <alias name="mySecondPersonBean" alias="mySecondBean" />
+    <alias name="mySecondPersonBean" alias="mySecondBean" /> -->
+
+    <!-- A new way when we are going to invoke the init and destroy bean methods -->
+    <bean id="myPersonBean" class="org.learning.spring.Person"
+          init-method="initBean" destroy-method="destroyBean" />
+
+    <bean id="mySecondPersonBean" class="org.learning.spring.Person"
+          init-method="initBean" destroy-method="destroyBean" />
 
 </beans>

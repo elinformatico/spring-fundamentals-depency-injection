@@ -15,9 +15,10 @@ public class MainExamplesBeansUsingXMLConfigFiles {
     public static void main(String[] args) {
 
         //SpringMainClass.creatingBeanByBeanFactoryDeprecated();
-        MainExamplesBeansUsingXMLConfigFiles.creatingBeanByBeanFactory();
+        //MainExamplesBeansUsingXMLConfigFiles.creatingBeanByBeanFactory();
         //SpringMainClass.creatingBeanByApplicationContext();
         //SpringMainClass.exampleOneCreatingBean();
+        MainExamplesBeansUsingXMLConfigFiles.invokingInitDestroyBeanMethods();
     }
 
     public static void creatingBeanByBeanFactoryDeprecated() {
@@ -86,5 +87,26 @@ public class MainExamplesBeansUsingXMLConfigFiles {
 
         System.out.println("First Bean: " + myPersonBean + "\n");
         System.out.println("Second Bean: " + mySecondPersonBean + "\n");
+    }
+
+    public static void invokingInitDestroyBeanMethods() {
+
+        ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Person myFirstPersonBean = (Person) appContext.getBean("myPersonBean");
+        Person mySecondPersonBean = (Person) appContext.getBean("myPersonBean");
+
+        mySecondPersonBean.setName("Maria");
+        mySecondPersonBean.setLastName("Concepcion");
+        mySecondPersonBean.setAge(26);
+        mySecondPersonBean.setProfession("Chemical");
+
+        System.out.println("First Bean: " + myFirstPersonBean + "\n");
+        System.out.println("Second Bean: " + mySecondPersonBean + "\n");
+
+        /* To the method .close() it is necessary use the "ClassPathXmlApplicationContext" on left declaration
+        * like ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        * instead of "ApplicationContext", and this will invoke the destroyBeanMethdos.
+        * */
+        appContext.close();
     }
 }

@@ -14,13 +14,14 @@ import org.springframework.stereotype.Component;
 //@Component  // --> it's works if we comment this line
 public class Person {
 
-    public Person() {
-        System.out.println("Creating Person Object");
-    }
     private String name = "Jose Noe";
     private String lastName = "Hernandez Vivanco";
     private int age = 38;
     private String profession = "Software Engineer";
+
+    public Person() {
+        System.out.println("Creating Person [" + this.name + "] Object");
+    }
 
     public String getName() {
         return name;
@@ -62,5 +63,13 @@ public class Person {
                 ", age=" + age +
                 ", profession='" + profession + '\'' +
                 '}';
+    }
+
+    public void initBean() throws Exception {
+        System.out.println("Person bean has been instantiated inside initBean() method");
+    }
+
+    public void destroyBean() throws Exception {
+        System.out.println("Person bean has been destroyed inside destroyBean() method()");
     }
 }
